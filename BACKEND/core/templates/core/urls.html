@@ -1,0 +1,53 @@
+{% load auth_extras %}
+{% with current=request.resolver_match.url_name %}
+<nav class="navbar sm:navbar-expand jes-navbar">
+    <div class="container-fluid">
+        <a class="navbar-brand jes-brand" href="{% url 'home' %}">
+            <span class="jes-brand-mark" aria-hidden="true">✦</span>
+            <span>
+                <span class="jes-brand-name">JES Beauty Studio</span>
+                <span class="jes-brand-tagline">Agenda de citas</span>
+            </span>
+        </a>
+        <button class="btn-icon navbar-toggler jes-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menú">
+            <span class="navbar-toggler-icon" aria-hidden="true"></span>
+        </button>
+        <dialog class="drawer drawer-end jes-drawer" tabindex="-1" id="navbarNav" aria-labelledby="navbarNavLabel">
+            <div class="drawer-header">
+                <h5 class="drawer-title" id="navbarNavLabel">Menú</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="drawer" aria-label="Cerrar"></button>
+            </div>
+            <div class="drawer-body">
+                <ul class="navbar-nav jes-nav">
+                    <li class="nav-item">
+                        <a class="nav-link{% if current == 'home' %} active{% endif %}" href="{% url 'home' %}"{% if current == 'home' %} aria-current="page"{% endif %}>Inicio</a>
+                    </li>
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link{% if current == 'services' %} active{% endif %}" href="{% url 'services' %}"{% if current == 'services' %} aria-current="page"{% endif %}>Servicios</a>
+                    </li>
+                    {% if user|has_group:"gestor" %}
+                    <li class="nav-item">
+                        <a class="nav-link{% if current == 'config' %} active{% endif %}" href="{% url 'config' %}"{% if current == 'config' %} aria-current="page"{% endif %}>Configuración</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <form action="{% url 'exit' %}" method="post">
+                            {% csrf_token %}
+                            <button class="nav-link" type="submit">Salir</button>
+                        </form>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link{% if current == 'login' %} active{% endif %}" href="{% url 'login' %}"{% if current == 'login' %} aria-current="page"{% endif %}>Ingresar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link{% if current == 'register' %} active{% endif %}" href="{% url 'register' %}"{% if current == 'register' %} aria-current="page"{% endif %}>Registrarse</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </dialog>
+    </div>
+</nav>
+{% endwith %}

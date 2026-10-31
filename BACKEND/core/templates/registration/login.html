@@ -1,0 +1,23 @@
+{% extends "core/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Ingresar · JES Beauty Studio{% endblock %}
+
+{% block content %}
+<section class="jes-auth">
+    <div class="jes-card jes-auth-card">
+        <span class="jes-auth-brand">✦ JES Beauty Studio</span>
+        <h1>Bienvenida de nuevo</h1>
+        <p>Ingresa tus credenciales para ver tus servicios y tus citas.</p>
+
+        <form action="{% url 'login' %}" method="post" class="jes-form">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}">
+            {{ form|crispy }}
+            <button class="btn btn-solid theme-primary btn-lg jes-btn-block mt-3" type="submit">Iniciar sesión</button>
+        </form>
+
+        <p class="jes-auth-alt">¿No tienes cuenta? <a href="{% url 'register' %}">Regístrate</a></p>
+    </div>
+</section>
+{% endblock %}

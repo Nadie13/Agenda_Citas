@@ -1,0 +1,71 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}Servicios · JES Beauty Studio{% endblock %}
+
+{% block content %}
+<header class="jes-page-head">
+    <span class="jes-eyebrow">✦ Menú de servicios ✦</span>
+    <h1 class="jes-page-title">Lista de precios</h1>
+    <p class="jes-page-text">
+        Uñas, cejas y pestañas con el cuidado y el detalle que tu estilo necesita.
+    </p>
+</header>
+
+{% if servicios %}
+    {% regroup servicios by tipo as categorias %}
+    <div class="jes-price-grid">
+        {% for categoria in categorias %}
+            <article class="jes-card jes-price-card">
+                <h2>{{ categoria.grouper|capfirst }}</h2>
+                <ul class="jes-price-list">
+                    {% for servicio in categoria.list %}
+                        <li class="jes-price-row">
+                            <span>{{ servicio.descripcion }}</span>
+                            <span class="jes-price">${{ servicio.precio|floatformat:0 }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </article>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="jes-price-grid">
+        <article class="jes-card jes-price-card">
+            <h2>Uñas</h2>
+            <p class="jes-empty">Estamos actualizando los precios de uñas.</p>
+        </article>
+        <article class="jes-card jes-price-card">
+            <h2>Cejas</h2>
+            <p class="jes-empty">Estamos actualizando los precios de cejas.</p>
+        </article>
+        <article class="jes-card jes-price-card">
+            <h2>Pestañas</h2>
+            <p class="jes-empty">Estamos actualizando los precios de pestañas.</p>
+        </article>
+    </div>
+{% endif %}
+
+<p class="jes-note">Los precios varían dependiendo del diseño.</p>
+
+<div class="jes-benefit">✦ ¡Tu cita incluye una bebida, un snack y chismecito! ✦</div>
+
+<section class="jes-gallery" aria-label="Galería de trabajos">
+    <figure class="jes-photo">
+        <img src="{% static 'core/img/manicura-01.jpg' %}" alt="Manicura francesa clásica con puntas blancas" width="260" height="315">
+        <figcaption>Francesa clásica</figcaption>
+    </figure>
+    <figure class="jes-photo">
+        <img src="{% static 'core/img/manicura-02.jpg' %}" alt="Manicura ombré en tonos pastel" width="225" height="315">
+        <figcaption>Ombré pastel</figcaption>
+    </figure>
+    <figure class="jes-photo">
+        <img src="{% static 'core/img/manicura-03.jpg' %}" alt="Manicura pastel con detalles dorados" width="206" height="190">
+        <figcaption>Detalles dorados</figcaption>
+    </figure>
+</section>
+
+<div class="jes-actions">
+    <a class="btn btn-outline theme-primary btn-lg" href="{% url 'home' %}">Volver al inicio</a>
+</div>
+{% endblock %}

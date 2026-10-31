@@ -1,0 +1,32 @@
+{% extends "core/base.html" %}
+{% load crispy_forms_tags crispy_forms_filters %}
+
+{% block title %}Crear cuenta · JES Beauty Studio{% endblock %}
+
+{% block content %}
+<section class="jes-auth">
+    <div class="jes-card jes-auth-card">
+        <span class="jes-auth-brand">✦ JES Beauty Studio</span>
+        <h1>Crea tu cuenta</h1>
+        <p>Completa tus datos y empieza a organizar tus citas de belleza.</p>
+
+        <form action="{% url 'register' %}" method="post" class="jes-form">
+            {% csrf_token %}
+            {{ user_form.username|as_crispy_field }}
+            <div class="jes-field-pair">
+                {{ user_form.first_name|as_crispy_field }}
+                {{ user_form.last_name|as_crispy_field }}
+            </div>
+            {{ user_form.email|as_crispy_field }}
+            {{ user_form.password1|as_crispy_field }}
+            {{ user_form.password2|as_crispy_field }}
+            <div class="jes-divider">Sobre ti</div>
+            {{ profile_form.telephone|as_crispy_field }}
+            {{ profile_form.notas_internas|as_crispy_field }}
+            <button class="btn btn-solid theme-primary btn-lg jes-btn-block mt-3" type="submit">Crear cuenta</button>
+        </form>
+
+        <p class="jes-auth-alt">¿Ya tienes cuenta? <a href="{% url 'login' %}">Inicia sesión</a></p>
+    </div>
+</section>
+{% endblock %}

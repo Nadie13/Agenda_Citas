@@ -1,0 +1,1059 @@
+/* ============================================================
+   JES Beauty Studio — tema pastel
+   Bootstrap 6.0.0-alpha.1 + crispy-bootstrap5
+   ============================================================ */
+
+/* ---------- 1. Tokens de marca ---------- */
+:root {
+  --jes-bg: #FBE7F0;
+  --jes-bg-soft: #F3D8E8;
+  --jes-bg-deep: #EBD4E9;
+  --jes-surface: rgba(255, 255, 255, 0.72);
+  --jes-surface-rose: rgba(235, 212, 233, 0.78);
+  --jes-lilac: #C9A7E0;
+  --jes-lilac-strong: #9B7FC4;
+  --jes-lilac-deep: #7E5DA8;
+  --jes-lilac-darker: #6B4C96;
+  --jes-blue: #AEA7E0;
+  --jes-pink: #D07FA8;
+  --jes-ink: #4A3659;
+  --jes-ink-soft: #6B5779;
+  --jes-white: #FFFFFF;
+  --jes-radius: 1.25rem;
+  --jes-radius-lg: 2rem;
+  --jes-shadow-sm: 0 8px 20px rgba(74, 54, 89, 0.08);
+  --jes-shadow: 0 18px 45px rgba(74, 54, 89, 0.14);
+  --jes-shadow-button: 0 10px 24px rgba(126, 93, 168, 0.32);
+  --jes-font-title: "Quicksand", "Nunito", system-ui, sans-serif;
+  --jes-font-body: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Overrides de Bootstrap 6 para que bg-1, fg-2 y theme-primary
+     adopten la identidad de la marca. */
+  --bs-primary-base: #9B7FC4;
+  --bs-primary-bg: #C9A7E0;
+  --bs-primary-bg-subtle: #F3D8E8;
+  --bs-primary-bg-muted: #EBD4E9;
+  --bs-primary-fg: #4A3659;
+  --bs-primary-fg-emphasis: #4A3659;
+  --bs-primary-border: #DBAED4;
+  --bs-primary-focus-ring: #C9A7E0;
+  --bs-primary-contrast: #FFFFFF;
+  --bs-bg-1: #FBE7F0;
+  --bs-fg-2: #4A3659;
+}
+
+/* ---------- 2. Base ---------- */
+body.jes-body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  color: var(--jes-ink);
+  font-family: var(--jes-font-body);
+  background:
+    radial-gradient(1100px 620px at 8% -8%, rgba(201, 167, 224, 0.55), transparent 62%),
+    radial-gradient(900px 520px at 102% 2%, rgba(174, 167, 224, 0.42), transparent 58%),
+    radial-gradient(700px 500px at 50% 110%, rgba(208, 127, 168, 0.16), transparent 60%),
+    linear-gradient(180deg, #FBE7F0 0%, #F8E4F1 48%, #F3D8E8 100%);
+  background-attachment: fixed;
+}
+
+.jes-body h1,
+.jes-body h2,
+.jes-body h3,
+.jes-body h4,
+.jes-body h5,
+.jes-body h6 {
+  font-family: var(--jes-font-title);
+  color: var(--jes-ink);
+  letter-spacing: -0.01em;
+}
+
+.jes-body a {
+  color: var(--jes-lilac-deep);
+  text-decoration: none;
+}
+
+.jes-body a:hover {
+  color: var(--jes-lilac-darker);
+}
+
+.jes-main {
+  position: relative;
+  z-index: 1;
+  flex: 1 0 auto;
+  padding-top: clamp(1.5rem, 4vw, 2.5rem);
+  padding-bottom: clamp(2rem, 5vw, 4rem);
+}
+
+.jes-navbar,
+.jes-footer {
+  position: relative;
+  z-index: 2;
+}
+
+/* ---------- 3. Decoración de fondo ---------- */
+.jes-decor {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.jes-cube {
+  position: absolute;
+  display: block;
+  width: var(--jes-cube-size, 90px);
+  aspect-ratio: 1;
+  border-radius: 24%;
+  background: linear-gradient(
+    135deg,
+    rgba(243, 216, 232, 0.95) 0%,
+    rgba(201, 167, 224, 0.72) 48%,
+    rgba(174, 167, 224, 0.62) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow:
+    0 18px 40px rgba(74, 54, 89, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  opacity: 0.65;
+  transform: rotate(var(--jes-cube-rotate, 12deg));
+  animation: jes-float var(--jes-cube-duration, 14s) ease-in-out infinite;
+}
+
+.jes-cube-1 {
+  top: 9%;
+  left: -42px;
+  --jes-cube-size: 130px;
+  --jes-cube-rotate: -14deg;
+  --jes-cube-duration: 16s;
+}
+
+.jes-cube-2 {
+  top: 28%;
+  right: -36px;
+  --jes-cube-size: 96px;
+  --jes-cube-rotate: 18deg;
+  --jes-cube-duration: 13s;
+  animation-delay: -4s;
+}
+
+.jes-cube-3 {
+  bottom: 16%;
+  left: 4%;
+  --jes-cube-size: 64px;
+  --jes-cube-rotate: 32deg;
+  --jes-cube-duration: 18s;
+  animation-delay: -7s;
+}
+
+.jes-cube-4 {
+  bottom: 6%;
+  right: 8%;
+  --jes-cube-size: 120px;
+  --jes-cube-rotate: -22deg;
+  --jes-cube-duration: 15s;
+  animation-delay: -2s;
+}
+
+.jes-sparkle {
+  position: absolute;
+  color: #FFFFFF;
+  font-size: var(--jes-sparkle-size, 1.1rem);
+  line-height: 1;
+  text-shadow: 0 0 18px rgba(255, 255, 255, 0.95);
+  opacity: 0.8;
+  animation: jes-twinkle var(--jes-sparkle-duration, 4s) ease-in-out infinite;
+}
+
+.jes-sparkle-1 {
+  top: 16%;
+  left: 16%;
+  --jes-sparkle-size: 1.5rem;
+}
+
+.jes-sparkle-2 {
+  top: 12%;
+  right: 22%;
+  --jes-sparkle-size: 0.9rem;
+  --jes-sparkle-duration: 5.4s;
+  animation-delay: -1.4s;
+}
+
+.jes-sparkle-3 {
+  top: 48%;
+  right: 6%;
+  --jes-sparkle-size: 1.2rem;
+  --jes-sparkle-duration: 3.6s;
+  animation-delay: -2.2s;
+}
+
+.jes-sparkle-4 {
+  bottom: 24%;
+  left: 40%;
+  --jes-sparkle-size: 0.8rem;
+  --jes-sparkle-duration: 6s;
+  animation-delay: -3s;
+}
+
+@keyframes jes-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--jes-cube-rotate, 12deg));
+  }
+  50% {
+    transform: translateY(-16px) rotate(calc(var(--jes-cube-rotate, 12deg) + 6deg));
+  }
+}
+
+@keyframes jes-twinkle {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.15);
+  }
+}
+
+/* ---------- 4. Navbar ---------- */
+.jes-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  padding: 0.7rem 0;
+  background: rgba(255, 255, 255, 0.58);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 12px 30px rgba(74, 54, 89, 0.06);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.jes-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--jes-ink);
+  font-family: var(--jes-font-title);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.jes-brand:hover {
+  color: var(--jes-lilac-deep);
+}
+
+.jes-brand-mark {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.8rem;
+  color: #FFFFFF;
+  font-size: 1rem;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--jes-lilac), var(--jes-blue));
+  box-shadow: 0 8px 18px rgba(126, 93, 168, 0.28);
+}
+
+.jes-brand-name {
+  display: block;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.jes-brand-tagline {
+  display: block;
+  margin-top: 0.18rem;
+  color: var(--jes-ink-soft);
+  font-family: var(--jes-font-body);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+}
+
+.jes-toggler {
+  padding: 0.55rem 0.7rem;
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(155, 127, 196, 0.3);
+  border-radius: 0.9rem;
+}
+
+.jes-nav {
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.jes-nav .nav-link {
+  padding: 0.55rem 1rem;
+  color: var(--jes-ink-soft);
+  font-family: var(--jes-font-title);
+  font-size: 0.95rem;
+  font-weight: 600;
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.jes-nav .nav-link:hover {
+  color: var(--jes-ink);
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.jes-nav .nav-link.active {
+  color: #FFFFFF;
+  background: linear-gradient(135deg, var(--jes-lilac-strong), var(--jes-lilac-deep));
+  box-shadow: 0 8px 18px rgba(126, 93, 168, 0.28);
+}
+
+.jes-nav form {
+  display: flex;
+  margin: 0;
+}
+
+.jes-drawer {
+  color: var(--jes-ink);
+  background: linear-gradient(160deg, #FFF9FC 0%, var(--jes-bg-soft) 100%);
+  border: 0;
+  border-radius: var(--jes-radius-lg) 0 0 var(--jes-radius-lg);
+  box-shadow: -20px 0 60px rgba(74, 54, 89, 0.2);
+}
+
+.jes-drawer::backdrop {
+  background: rgba(74, 54, 89, 0.28);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.jes-drawer .drawer-header {
+  padding: 1.1rem 1.25rem;
+  border-bottom: 1px solid rgba(155, 127, 196, 0.18);
+}
+
+.jes-drawer .drawer-title {
+  color: var(--jes-ink);
+  font-family: var(--jes-font-title);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.jes-drawer .drawer-body {
+  padding: 1.1rem 1.25rem;
+}
+
+@media (min-width: 576px) {
+  .jes-drawer {
+    position: static;
+    width: auto;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .jes-drawer .drawer-body {
+    padding: 0;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .jes-drawer .jes-nav {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.35rem;
+  }
+
+  .jes-drawer .jes-nav .nav-link {
+    display: block;
+  }
+}
+
+/* ---------- 5. Botones ---------- */
+.jes-body .btn {
+  font-family: var(--jes-font-title);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border-radius: 999px;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.jes-body .btn-solid.theme-primary {
+  color: #FFFFFF;
+  background-color: var(--jes-lilac-deep);
+  background-image: linear-gradient(135deg, #8E6FB8 0%, var(--jes-lilac-darker) 100%);
+  border: 0;
+  box-shadow: var(--jes-shadow-button);
+}
+
+.jes-body .btn-solid.theme-primary:hover,
+.jes-body .btn-solid.theme-primary:focus-visible {
+  color: #FFFFFF;
+  background-image: linear-gradient(135deg, #9B7FC4 0%, #5F4189 100%);
+  box-shadow: 0 14px 28px rgba(107, 76, 150, 0.4);
+  transform: translateY(-2px);
+}
+
+.jes-body .btn-outline.theme-primary {
+  color: var(--jes-lilac-deep);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1.5px solid rgba(155, 127, 196, 0.45);
+}
+
+.jes-body .btn-outline.theme-primary:hover,
+.jes-body .btn-outline.theme-primary:focus-visible {
+  color: #FFFFFF;
+  background: linear-gradient(135deg, var(--jes-lilac-strong), var(--jes-lilac-deep));
+  border-color: transparent;
+  transform: translateY(-2px);
+}
+
+.jes-btn-block {
+  width: 100%;
+}
+
+/* ---------- 6. Tarjetas de vidrio ---------- */
+.jes-card {
+  background: var(--jes-surface);
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: var(--jes-radius-lg);
+  box-shadow: var(--jes-shadow);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.jes-card-soft {
+  background: var(--jes-surface-rose);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: var(--jes-radius-lg);
+  box-shadow: var(--jes-shadow-sm);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* ---------- 7. Tipografía de página ---------- */
+.jes-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.42rem 0.95rem;
+  color: var(--jes-lilac-deep);
+  font-family: var(--jes-font-title);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 999px;
+  box-shadow: 0 6px 16px rgba(74, 54, 89, 0.05);
+}
+
+.jes-hero {
+  max-width: 54rem;
+  margin: 0 auto;
+  padding: clamp(2.2rem, 6vw, 4.5rem) 0 1.5rem;
+  text-align: center;
+}
+
+.jes-hero-title {
+  margin: 1rem 0;
+  font-family: var(--jes-font-title);
+  font-size: clamp(2.5rem, 7vw, 4.6rem);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  color: var(--jes-ink);
+}
+
+.jes-gradient-text {
+  color: var(--jes-lilac-deep);
+  background: linear-gradient(110deg, #6B4C96 0%, #A34E7C 55%, #7E5DA8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@supports not (background-clip: text) {
+  .jes-gradient-text {
+    color: var(--jes-lilac-deep);
+    -webkit-text-fill-color: currentColor;
+  }
+}
+
+.jes-hero-text {
+  max-width: 38rem;
+  margin: 0 auto 1.6rem;
+  color: var(--jes-ink-soft);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.jes-hello {
+  display: inline-block;
+  margin: 0 0 1rem;
+  padding: 0.4rem 0.9rem;
+  color: var(--jes-ink);
+  font-family: var(--jes-font-title);
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 999px;
+}
+
+.jes-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.jes-page-head {
+  max-width: 46rem;
+  margin: 0 auto 2rem;
+  padding: 1rem 0 0;
+  text-align: center;
+}
+
+.jes-page-title {
+  margin: 0.75rem 0;
+  font-family: var(--jes-font-title);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  color: var(--jes-ink);
+}
+
+.jes-page-text {
+  color: var(--jes-ink-soft);
+  line-height: 1.7;
+}
+
+.jes-section-title {
+  margin: 2.5rem 0 1rem;
+  font-family: var(--jes-font-title);
+  font-size: clamp(1.35rem, 3vw, 1.8rem);
+  font-weight: 700;
+  color: var(--jes-ink);
+}
+
+/* ---------- 8. Galería ---------- */
+.jes-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: clamp(2rem, 5vw, 3.5rem) 0;
+}
+
+.jes-photo {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: var(--jes-surface-rose);
+  border-radius: var(--jes-radius-lg);
+  box-shadow: var(--jes-shadow-sm);
+}
+
+.jes-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.jes-photo:hover img {
+  transform: scale(1.045);
+}
+
+.jes-photo figcaption {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 1.6rem 1rem 0.85rem;
+  color: #FFFFFF;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background: linear-gradient(180deg, transparent 0%, rgba(74, 54, 89, 0.68) 100%);
+}
+
+@media (max-width: 575.98px) {
+  .jes-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .jes-photo {
+    aspect-ratio: 16 / 11;
+  }
+}
+
+/* ---------- 9. Tarjetas rápidas ---------- */
+.jes-quick-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+}
+
+.jes-quick-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  height: 100%;
+  padding: 1.6rem;
+}
+
+.jes-icon-bubble {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  color: var(--jes-lilac-deep);
+  background: linear-gradient(135deg, rgba(201, 167, 224, 0.5), rgba(174, 167, 224, 0.38));
+  border-radius: 1rem;
+}
+
+.jes-icon-bubble svg {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+.jes-quick-card h3 {
+  margin: 0;
+  font-family: var(--jes-font-title);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.jes-quick-card p {
+  margin: 0;
+  color: var(--jes-ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.jes-card-link {
+  margin-top: auto;
+  font-family: var(--jes-font-title);
+  font-weight: 700;
+  color: var(--jes-lilac-deep);
+}
+
+.jes-card-link:hover {
+  color: var(--jes-lilac-darker);
+}
+
+/* ---------- 10. Precios / vacíos ---------- */
+.jes-price-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.jes-price-card {
+  height: 100%;
+  padding: 1.6rem;
+}
+
+.jes-price-card h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 1rem;
+  font-family: var(--jes-font-title);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.jes-price-card h2::before {
+  content: "✦";
+  color: var(--jes-lilac-strong);
+  font-size: 1rem;
+}
+
+.jes-price-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.jes-price-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.65rem 0;
+  font-size: 0.95rem;
+  border-bottom: 1px dashed rgba(155, 127, 196, 0.25);
+}
+
+.jes-price-row:last-child {
+  border-bottom: 0;
+}
+
+.jes-price {
+  color: var(--jes-lilac-deep);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.jes-empty {
+  margin: 0;
+  padding: 1.1rem;
+  color: var(--jes-ink);
+  font-size: 0.9rem;
+  font-style: italic;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px dashed rgba(155, 127, 196, 0.45);
+  border-radius: 1rem;
+}
+
+.jes-note {
+  margin-top: 1rem;
+  color: var(--jes-ink-soft);
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+/* ---------- 11. Barra de beneficio ---------- */
+.jes-benefit {
+  position: relative;
+  margin: 2rem 0;
+  padding: 1.1rem 1.6rem;
+  overflow: hidden;
+  color: #FFFFFF;
+  font-family: var(--jes-font-title);
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  background: linear-gradient(135deg, #8E6FB8 0%, #6B4C96 100%);
+  border-radius: 999px;
+  box-shadow: var(--jes-shadow-button);
+}
+
+.jes-benefit::before,
+.jes-benefit::after {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 1.1rem;
+  content: "✦";
+}
+
+.jes-benefit::before {
+  top: 0.55rem;
+  left: 1.1rem;
+}
+
+.jes-benefit::after {
+  right: 1.1rem;
+  bottom: 0.55rem;
+}
+
+/* ---------- 12. Formularios y autenticación ---------- */
+.jes-auth {
+  max-width: 34rem;
+  margin: clamp(1.5rem, 5vw, 3.5rem) auto;
+}
+
+.jes-auth-card {
+  padding: clamp(1.5rem, 4vw, 2.6rem);
+}
+
+.jes-auth-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 1rem;
+  color: var(--jes-lilac-deep);
+  font-family: var(--jes-font-title);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.jes-auth-card h1 {
+  margin: 0 0 0.35rem;
+  font-family: var(--jes-font-title);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 700;
+}
+
+.jes-auth-card > p {
+  margin: 0 0 1.5rem;
+  color: var(--jes-ink-soft);
+  line-height: 1.6;
+}
+
+.jes-form .form-label {
+  margin-bottom: 0.35rem;
+  color: var(--jes-ink);
+  font-family: var(--jes-font-title);
+  font-weight: 600;
+}
+
+.jes-form .form-control,
+.jes-form .form-select {
+  padding: 0.8rem 1rem;
+  color: var(--jes-ink);
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(155, 127, 196, 0.3);
+  border-radius: 1rem;
+  box-shadow: inset 0 1px 2px rgba(74, 54, 89, 0.04);
+}
+
+.jes-form .form-control:focus,
+.jes-form .form-select:focus {
+  color: var(--jes-ink);
+  background: #FFFFFF;
+  border-color: var(--jes-lilac-strong);
+  box-shadow: 0 0 0 0.25rem rgba(155, 127, 196, 0.18);
+}
+
+.jes-form .form-control::placeholder {
+  color: rgba(124, 103, 136, 0.7);
+}
+
+.jes-form .asteriskField {
+  margin-left: 0.15rem;
+  color: #C05C86;
+}
+
+.jes-form .invalid-feedback {
+  color: #B03A63;
+}
+
+.jes-form .form-control.is-invalid,
+.jes-form .form-select.is-invalid {
+  border-color: #D77A9E;
+}
+
+.jes-form .help-block,
+.jes-form .form-text {
+  margin-top: 0.3rem;
+  color: var(--jes-ink-soft);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.jes-form textarea.form-control {
+  min-height: 4.5rem;
+}
+
+.jes-field-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 0.9rem;
+}
+
+@media (max-width: 575.98px) {
+  .jes-field-pair {
+    grid-template-columns: 1fr;
+  }
+}
+
+.jes-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1.5rem 0 1rem;
+  color: var(--jes-ink-soft);
+  font-family: var(--jes-font-title);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.jes-divider::before,
+.jes-divider::after {
+  flex: 1;
+  height: 1px;
+  content: "";
+  background: rgba(155, 127, 196, 0.25);
+}
+
+.jes-auth-alt {
+  margin: 1.25rem 0 0;
+  color: var(--jes-ink-soft);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.jes-auth-alt a {
+  font-weight: 700;
+  color: var(--jes-lilac-deep);
+}
+
+/* ---------- 13. Alertas ---------- */
+.jes-body .alert {
+  border: 1px solid rgba(155, 127, 196, 0.2);
+  border-radius: 1rem;
+  box-shadow: var(--jes-shadow-sm);
+}
+
+/* ---------- 14. Configuración ---------- */
+.jes-config-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.jes-config-card {
+  padding: 1.6rem;
+}
+
+.jes-config-card h2 {
+  margin-bottom: 0.5rem;
+  font-family: var(--jes-font-title);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.jes-config-card p {
+  margin-bottom: 1rem;
+  color: var(--jes-ink-soft);
+  line-height: 1.6;
+}
+
+/* ---------- 15. Footer ---------- */
+.jes-footer {
+  flex-shrink: 0;
+  padding: 2rem 0 1.25rem;
+  background: rgba(255, 255, 255, 0.72);
+  border-top: 1px solid rgba(155, 127, 196, 0.18);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.jes-footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.jes-footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--jes-ink);
+  font-family: var(--jes-font-title);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.jes-footer-brand:hover {
+  color: var(--jes-lilac-deep);
+}
+
+.jes-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+}
+
+.jes-footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--jes-ink-soft);
+  font-size: 0.9rem;
+}
+
+.jes-footer-link:hover {
+  color: var(--jes-lilac-deep);
+}
+
+.jes-icon {
+  flex: none;
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.jes-footer-note {
+  margin: 1rem 0 0;
+  color: var(--jes-ink-soft);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* ---------- 16. Accesibilidad y movimiento ---------- */
+.jes-body a:focus-visible,
+.jes-body button:focus-visible,
+.jes-body .nav-link:focus-visible {
+  outline: 3px solid rgba(155, 127, 196, 0.45);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---------- 17. Responsive ---------- */
+@media (max-width: 767.98px) {
+  .jes-hero {
+    padding-top: 1.8rem;
+  }
+
+  .jes-hero-title {
+    font-size: clamp(2.4rem, 11vw, 3.4rem);
+  }
+
+  .jes-benefit {
+    border-radius: 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .jes-footer-inner {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .jes-footer-links {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .jes-cube-2,
+  .jes-cube-3,
+  .jes-sparkle-2,
+  .jes-sparkle-4 {
+    display: none;
+  }
+
+  .jes-brand-tagline {
+    letter-spacing: 0.2em;
+  }
+
+  .jes-actions .btn {
+    width: 100%;
+  }
+}

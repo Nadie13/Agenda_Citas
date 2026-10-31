@@ -1,0 +1,54 @@
+{% extends "core/base.html" %}
+
+{% block title %}Configuración · JES Beauty Studio{% endblock %}
+
+{% block content %}
+<header class="jes-page-head">
+    <span class="jes-eyebrow">✦ Solo para gestores ✦</span>
+    <h1 class="jes-page-title">Configuración</h1>
+    <p class="jes-page-text">
+        Administra la información del estudio, los horarios y los servicios disponibles.
+    </p>
+</header>
+
+<div class="jes-config-grid">
+    <article class="jes-card jes-config-card">
+        <span class="jes-icon-bubble" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M4 21v-1a8 8 0 0 1 16 0v1"/>
+            </svg>
+        </span>
+        <h2>Perfil del estudio</h2>
+        <p>Nombre, descripción, redes sociales y datos de contacto.</p>
+        <p class="jes-empty">En producción.</p>
+    </article>
+
+    <article class="jes-card jes-config-card">
+        <span class="jes-icon-bubble" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M12 7v5l3 2"/>
+            </svg>
+        </span>
+        <h2>Horarios</h2>
+        <p>Define los días y las horas de atención del estudio.</p>
+        <p class="jes-empty">En producción.</p>
+    </article>
+
+    <article class="jes-card jes-config-card">
+        <span class="jes-icon-bubble" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3l2.4 5.9L21 11l-6.6 2.1L12 19l-2.4-5.9L3 11l6.6-2.1z"/>
+            </svg>
+        </span>
+        <h2>Servicios</h2>
+        <p>Precios, duración y disponibilidad de cada servicio.</p>
+        <p class="jes-empty">En producción.</p>
+    </article>
+</div>
+
+<div class="jes-actions mt-4">
+    <a class="btn btn-outline theme-primary btn-lg" href="{% url 'home' %}">Volver al inicio</a>
+</div>
+{% endblock %}

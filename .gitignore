@@ -1,0 +1,19 @@
+# Variables de entorno (contienen secretos, no se suben)
+.env
+
+# Python / Django
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*.sqlite3
+staticfiles/
+media/
+
+# Node / frontend
+node_modules/
+dist/
+
+# Sistema
+.DS_Store
+__pycache__
