@@ -1,4 +1,4 @@
-# Agenda de Citas — JES Beauty Studio
+# Agenda de Citas — JES Beauty Studio 
 
 Sistema web para gestionar citas de un estudio de belleza. Permite registrarse,
 iniciar sesión, consultar servicios y administrar citas, horarios y perfiles de
